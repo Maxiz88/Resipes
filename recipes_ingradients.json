@@ -1,0 +1,42 @@
+{
+  "fields": [
+    {
+      "name": "ingradient_quantity",
+      "type": "string"
+    },
+    {
+      "name": "recipe_id",
+      "type": "integer#unsigned"
+    },
+    {
+      "name": "ingradient_id",
+      "type": "integer#unsigned"
+    }
+  ],
+  "foreign_keys": [
+    {
+      "column": "recipe_id",
+      "references": "id",
+      "on": "recipes",
+      "onDelete": "cascade"
+    },
+    {
+      "column": "ingradient_id",
+      "references": "id",
+      "on": "ingradients",
+      "onDelete": "cascade"
+    }
+  ],
+  "relationships": [
+    {
+      "name": "recipe",
+      "type": "belongsToMany",
+      "class": "App\\Recipe"
+    },
+    {
+      "name": "ingradient",
+      "type": "belongsToMany",
+      "class": "App\\Ingradient"
+    }
+  ]
+}
